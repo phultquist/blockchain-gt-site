@@ -1,11 +1,11 @@
-import React from 'react'
-import type { NextPage } from 'next'
-import dynamic from 'next/dynamic'
-import Navbar from '../components/Navbar'
-import { draw, setup } from '../p5/base.p5'
-import { motion } from "framer-motion"
+import React from "react";
+import type { NextPage } from "next";
+import dynamic from "next/dynamic";
+import Navbar from "../components/Navbar";
+import { draw, setup, windowResized } from "../p5/base.p5";
+import { motion } from "framer-motion";
 
-const Sketch = dynamic(import('react-p5'), { ssr: false })
+const Sketch = dynamic(import("react-p5"), { ssr: false });
 
 const Home: NextPage = () => {
   return (
@@ -13,48 +13,78 @@ const Home: NextPage = () => {
       <div className="bg-gradient-to-br from-primary to-primary-dark w-screen h-screen">
         <Navbar />
         <div className="flex w-full h-full">
-          <div className='absolute z-0'>
-            <Sketch setup={setup} draw={draw} />
+          <div className="absolute z-0">
+            <Sketch setup={setup} draw={draw} windowResized={windowResized} />
           </div>
           <div className="m-auto text-white z-10">
             <motion.div
               animate={{
                 scale: [0.8, 1],
                 opacity: [0, 0, 1],
-                y: [100, 0]
+                y: [100, 0],
               }}
-              transition={{ duration: 2, ease: 'easeOut', delay: 1 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 1 }}
             >
-              <h1 className="uppercase text-center font-bold text-5xl tracking-wider">Blockchain</h1>
+              <h1 className="uppercase text-center font-bold text-5xl tracking-wider">
+                Blockchain
+              </h1>
             </motion.div>
             <motion.div
               animate={{
                 scale: [0.8, 1],
                 opacity: [0, 0, 1],
-                y: [50, 0]
+                y: [50, 0],
               }}
-              transition={{ duration: 2, ease: 'easeOut', delay: 1.5 }}>
-              <h2 className="uppercase text-center font-light text-2xl">At Georgia Tech</h2>
+              transition={{ duration: 2, ease: "easeOut", delay: 1.5 }}
+            >
+              <h2 className="uppercase text-center font-light text-2xl">
+                At Georgia Tech
+              </h2>
             </motion.div>
           </div>
         </div>
       </div>
-      <div className="container mx-auto p-4 pt-16">
+      <div className="container mx-auto p-4 py-16">
         <h2 className="uppercase font-bold text-3xl text-center">Our Work</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
-          <div className="text-center">
-            test
+        <div className="grid gap-x-10 grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 pt-10 text-left">
+          <div>
+            Ribus aut erchili catemperum inumquatus ulli- bus aut entiunt
+            magnihitat. Icit, to beaquistis suntia volut ipsant acessi- taspid
+            enda que pratem ad qui offici cum ea dellabor ratis nulpa illitem
+            intur, omnis accus eostis ilique inciam, sit utatem archilita
+            veliaer- spiet mo magnis moluptat odist, tem conem hit, sitatis
+            eossent, aut quodis aut ma volene volut verum am ant autem quam
+            fuga.
           </div>
-          <div className="text-center">
-            test
+          <div>
+            Ribus aut erchili catemperum inumquatus ulli- bus aut entiunt
+            magnihitat. Icit, to beaquistis suntia volut ipsant acessi- taspid
+            enda que pratem ad qui offici cum ea dellabor ratis nulpa illitem
+            intur, omnis accus eostis ilique inciam, sit utatem archilita
+            veliaer- spiet mo magnis moluptat odist, tem conem hit, sitatis
+            eossent, aut quodis aut ma volene volut verum am ant autem quam
+            fuga.
           </div>
-          <div className="text-center">
-            test
+          <div>
+            Ribus aut erchili catemperum inumquatus ulli- bus aut entiunt
+            magnihitat. Icit, to beaquistis suntia volut ipsant acessi- taspid
+            enda que pratem ad qui offici cum ea dellabor ratis nulpa illitem
+            intur, omnis accus eostis ilique inciam, sit utatem archilita
+            veliaer- spiet mo magnis moluptat odist, tem conem hit, sitatis
+            eossent, aut quodis aut ma volene volut verum am ant autem quam
+            fuga.
           </div>
         </div>
       </div>
+      <div className="bg-primary text-white w-full p-10">
+        <div className="w-full h-[15px] border-b border-yellow-600 text-center">
+          <span className="text-xl bg-primary px-4 font-bold uppercase">Our Partners</span>
+        </div>
+        <div className="h-20 w-full"></div>
+        <div className="border-b border-yellow-600" />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

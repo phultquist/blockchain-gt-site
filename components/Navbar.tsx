@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 const Navbar: NextPage = () => {
     return (
-        <div className="w-screen">
-            <p className="bg-none">
+        <div className="w-screen text-white fixed">
+            <p className="">
                 test
             </p>
 

@@ -43,6 +43,10 @@ export const draw = (p5: p5Type): void => {
     });
 }
 
+export const windowResized = (p5: p5Type): void => {
+    p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+}
+
 const fleeRadius = 20;
 
 export class Point {
