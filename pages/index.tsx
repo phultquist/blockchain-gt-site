@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Navbar from "../components/Navbar";
 import { draw, setup, windowResized } from "../p5/base.p5";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-const Sketch = dynamic(import("react-p5"), { ssr: false });
+const Sketch =
+  typeof window !== "undefined" && dynamic(import("react-p5"), { ssr: false });
 
 const Home: NextPage = () => {
+  console.log(typeof window);
+  const [component, setComponent] = React.useState(null);
+  useEffect(() => {
+    setComponent(
+      <Sketch setup={setup} draw={draw} windowResized={windowResized} />
+    );
+  }, []);
+
   return (
     <>
-      <div className="bg-gradient-to-br from-primary to-primary-dark w-screen h-screen">
+      <div className="bg-gradient-to-tr from-[rgb(15,27,53)] via-[rgb(25,39,74)] to-[rgb(48,61,94)] w-screen h-screen">
         <Navbar />
         <div className="flex w-full h-full">
-          <div className="absolute z-0">
-            <Sketch setup={setup} draw={draw} windowResized={windowResized} />
-          </div>
+          <div className="absolute z-0">{component}</div>
           <div className="m-auto text-white z-10">
             <motion.div
               animate={{
@@ -25,6 +33,9 @@ const Home: NextPage = () => {
               }}
               transition={{ duration: 2, ease: "easeOut", delay: 1 }}
             >
+              <div className="relative w-32 h-32 mx-auto mb-4">
+                <Image src="/blocks.png" layout="fill" alt="blocks" />
+              </div>
               <h1 className="uppercase text-center font-bold text-5xl tracking-wider">
                 Blockchain
               </h1>
@@ -78,7 +89,9 @@ const Home: NextPage = () => {
       </div>
       <div className="bg-primary text-white w-full p-10">
         <div className="w-full h-[15px] border-b border-yellow-600 text-center">
-          <span className="text-xl bg-primary px-4 font-bold uppercase">Our Partners</span>
+          <span className="text-xl bg-primary px-4 font-bold uppercase">
+            Our Partners
+          </span>
         </div>
         <div className="h-20 w-full"></div>
         <div className="border-b border-yellow-600" />
