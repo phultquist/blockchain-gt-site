@@ -20,6 +20,6 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 ## Roadmap
 - [ ] Finish Events Page with better styling
-- [ ] Add headless CMS ([keystone](https://keystonejs.org))
+- [ ] Add headless CMS ([keystone](https://keystonejs.com))
 - [ ] Add contact page
 - [ ] Add login to view sensitive content
